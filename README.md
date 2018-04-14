@@ -1,2 +1,2 @@
 # Notes
-This is a collection of miscellaneous notes I take from time to time.
+This is a collection of notes I take from time to time.
