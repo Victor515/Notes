@@ -1,0 +1,16 @@
+# AWS Concepts  
+
+This is a note taken while learning Linux Academy Course: AWS Concepts.
+
+## AWS & the Cloud
+Infrastructure as a service(IaSS)
+AWS is IaSS
+
+### Why Cloud?  
+For single user:  
+  - High Availability
+  - Fault Tolerant
+
+For Enterprise:  
+  - Scalability
+  - Elasticity
