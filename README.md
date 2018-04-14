@@ -1,2 +1,2 @@
 # Notes
-This is the place where I collect notes taken outside classrooms
+This is a collection of miscellaneous notes I take from time to time.
