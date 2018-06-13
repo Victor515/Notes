@@ -157,3 +157,69 @@ Autoboxing in method calls will happen in non–strict mode based on the initial
 Autoboxing will not happen in strict mode, the this value remains as passed.
 
 ### Sub classing with extends  
+Basic example:
+```javascript
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(this.name + ' makes a noise.');
+  }
+}
+
+class Dog extends Animal {
+  constructor(name) {
+    super(name); // call the super class constructor and pass in the name parameter
+  }
+
+  speak() {
+    console.log(this.name + ' barks.');
+  }
+}
+
+let d = new Dog('Mitzie');
+d.speak(); // Mitzie barks.
+```
+If there is a constructor present in subclass, it needs to first call super() before using "this".
+
+Addition:
+The only purpose of **extends** is to create single-ancestor class taxonomies.
+
+## let and const  
+The let statement declares a **block scope** local variable, optionally initializing it to a value.  
+```Javascript
+let x = 1;
+
+if (x === 1) {
+  let x = 2;
+
+  console.log(x);
+  // expected output: 2
+}
+
+console.log(x);
+// expected output: 1
+
+```
+> let is an alternative to Javascript's traditional scoping rules  
+
+`let` allows you to declare variables that are limited in scope to the block, statement, or expression on which it is used. This is unlike the `var` keyword, which defines a variable globally, or locally to an entire function regardless of block scope.
+
+Constants are **block-scoped**, much like variables defined using the let statement. The value of a constant cannot change through re-assignment, and it can't be redeclared.
+```javascript
+const number = 42;
+
+try {
+  number = 99;
+} catch(err) {
+  console.log(err);
+  // expected output: TypeError: invalid assignment to const `number'
+  // Note - error messages will vary depending on browser
+}
+
+console.log(number);
+// expected output: 42
+
+```
