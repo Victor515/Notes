@@ -1,4 +1,4 @@
-# Review for ES6
+# Review for ES6 2
 
 A glimpse at some ES6 features used quite frequently
 
@@ -9,3 +9,5 @@ A glimpse at some ES6 features used quite frequently
 ## Module
 
 ## Computed property names
+
+## Default parameters
