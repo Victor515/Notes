@@ -1,6 +1,6 @@
 # Review for ES6
 
-A glimpse at some ES6 features used frequently at work
+A glimpse at some ES6 features used quite frequently
 
 ## Rest Syntax and Spread Syntax
 
