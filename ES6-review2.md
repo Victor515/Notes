@@ -8,6 +8,8 @@ A glimpse at some ES6 features used quite frequently
 
 ## Module
 
+## Template Literals
+
 ## Computed property names
 
 ## Default parameters
