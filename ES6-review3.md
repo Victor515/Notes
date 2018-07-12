@@ -1,3 +1,3 @@
 # Review for ES6 3 -- Promise
 
-A review of promise
+You have my promise!
