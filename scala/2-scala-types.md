@@ -2,7 +2,9 @@
 
 In Scala, all values have a type, including numerical values and **functions**.
 
- ![unified-types-diagram](/home/victor515/Downloads/Notes/scala/2-scala-types/unified-types-diagram.svg)
+ ![unified-types-diagram](./2-scala-types/unified-types-diagram.svg)
+
+
 
 `Any` is the supertype of all types. It has methods like:
 
@@ -53,7 +55,7 @@ true
 
 
 
-![type-casting-diagram](/home/victor515/Downloads/Notes/scala/2-scala-types/type-casting-diagram.svg)
+![type-casting-diagram](./2-scala-types/type-casting-diagram.svg)
 
 ```scala
 val x: Long = 987654321
