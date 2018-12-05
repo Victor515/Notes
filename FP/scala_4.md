@@ -1,9 +1,3 @@
-### First-Class Functions
-
-### Additional Syntax Collection
-
-### Type Hierarchy and Generic Types
-
 ### Variance of Parametric Types
 
 1. In general, we say that a parametric type C is **covariant** with respect to its type parameter S if: 
