@@ -4,6 +4,12 @@
 
 2. ":" related operators are right-associative
 
+   ```scala
+   X :: Y ⇒ Y.`::`(X)
+   X +: Y ⇒ Y.`+:`(X)
+   X :+ Y ⇒ X.`:+`(Y)
+   ```
+
 3. Destructing Binary constructor patterns:
 
    ```scala
@@ -17,11 +23,15 @@
    A ~ B // match A followed by B
    ```
 
+### Recursion and Accumulators
+
+5. An accumulator parameter allows us to **“remember”** knowledge from one recursive call to another.
+
 ### Call-By-Name and Call-By-Value
 
-4. Call-By-Name is a compiler-provided feature that allows us to delay evaluation of some expressions until they are really needed.
+6. Call-By-Name is a compiler-provided feature that allows us to delay evaluation of some expressions until they are really needed.
 
-5. Comparison of call-by-value thunks and call-by-name syntax:
+7. Comparison of call-by-value thunks and call-by-name syntax:
 
 ```scala
 // purpose: delay the evaluation of right
@@ -37,21 +47,24 @@ def myOr(left: Boolean, right: => Boolean) =
 	else right
 ```
 
-6. Syntactic sugar for passing arguments: Any function that takes a single argument can be applied by passing the argument **enclosed in braces** instead of parentheses
+8. Braces for passing arguments(Syntactic Sugar): Any function that takes a **single argument** can be applied by passing the argument **enclosed in braces** instead of parentheses
 
-   ```scala
-   def myAssert(predicate: => Boolean) =
-   	if (assertionsEnabled && !predicate)
-   	throw new AssertionError
-   
-   myAssert {
-   	def double(n: Int) = 2 * n
-   	double(2) == 4
-   }
-   ```
+```scala
+def myAssert(predicate: => Boolean) =
+	if (assertionsEnabled && !predicate)
+	throw new AssertionError
+
+myAssert {
+	def double(n: Int) = 2 * n
+	double(2) == 4
+}
+```
 
 
 
 ### Immutable Collections: List, Set, Maps
 
-7. Why are Sets invariant in its parametric element type (and why are keys in Maps also invariant)?
+9. List Operators
+10. Set Operators
+11. Why are Sets invariant in its parametric element type (and why are keys in Maps also invariant)?
+12. Map Operators

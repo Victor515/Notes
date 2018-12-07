@@ -44,9 +44,15 @@ new Foo() with X
 
    Question: What is the difference between self-types and inheritance
 
+* Self-typing allows introduction of a **cyclic dependency** between two types.
+
+
+
+### Parser Combinator
+
+
+
 ### Streams
 
 3. A form of "lazy" sequence. Because of lazy evaluation, we could do something impossible to **List**
-
-### Parser Combinator
 

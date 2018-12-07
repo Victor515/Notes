@@ -111,11 +111,15 @@ extends List[T] { …
 
 12. **For Expressions**:
 
+    For expression reduces to a collection, depending on the types of collections iterated over.
+
+    * Scala’s for-comprehensions are a concise **short-hand** for composing monadic operations: flatMap, map, filter.
+
 ```scala
 for clauses yield body
 
 // to
-for (i <- 1 to 10) yield square(i) + 1
+for (i <- 1 to 10) yield square(i) + 1 // we call this a "generator"
 
 // until
 for (i <- 0 until 10) yield square(i) + 1
