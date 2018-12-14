@@ -224,15 +224,13 @@
 
 3. Use `with` statement when opening a file:
 
-    ```python
+4. ```python
    # with will automatically close the file when the block ends
    with open('examples/chinese.txt', encoding='utf-8') as a_file:
-   	a_file.seek(17)
-   	a_character = a_file.read(1)
-   	print(a_character)
-    ```
-
-4. ```python
+      	a_file.seek(17)
+      	a_character = a_file.read(1)
+      	print(a_character)
+   
    # Read a whole text file
    with open('examples/chinese.txt', encoding='utf-8') as a_file:
        text = a_file.read()
@@ -282,7 +280,7 @@
    >>> exit()
    ```
 
-5.  standard input, output and error:
+5. standard input, output and error:
 
    ```python
    import sys
@@ -309,3 +307,8 @@
    # Only 'A', 'C' will print on screen
    # 'B' will be printed to file out.log
    ```
+
+
+
+## Serializing Python Objects
+
