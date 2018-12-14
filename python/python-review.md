@@ -312,3 +312,58 @@
 
 ## Serializing Python Objects
 
+1. For Python-specific serialization, we can use pickle:
+
+   ```python
+   import pickle
+   # Dump to a disk file
+   with open('entry.pickle', 'wb') as f:
+       pickle.dump(entry, f)
+   # Load from a disk file
+   with open('entry.pickle', 'rb') as f:
+       entry = pickle.load(f)
+   
+   # Pickle without a file
+   b = pickle.dumps(entry) # dump to a byte object
+   type(b) #<class 'bytes'>
+   entry3 = pickle.loads(b)
+   entry3 == entry #True
+   
+   ```
+
+2. For cross-language compatibility, we can use JSON (JavaScript Object Notation).
+
+3. **There ain’t no such thing as “plain text”.** Encoding always play an important role.
+
+4. JSON must be stored in Unicode Encoding.
+
+5. bytes, tuples and custom class instances are not serializable with json modules. We need to define custom `to_json` and `from_json` converter and supply then to `json.dump` and `json.load` accordingly. 
+
+   ```python
+   # in customserializer.py
+   import time
+   def to_json(python_object):
+       if isinstance(python_object, time.struct_time):
+           return {'__class__': 'time.asctime','__value__':time.asctime(python_object)}
+       if isinstance(python_object, bytes):
+           return {'__class__': 'bytes','__value__': list(python_object)}
+       raise TypeError(repr(python_object) + ' is not JSON serializable')
+   
+   def from_json(json_object):
+   	if '__class__' in json_object:
+   		if json_object['__class__'] == 'time.asctime':
+   			return time.strptime(json_object['__value__'])
+   		if json_object['__class__'] == 'bytes':
+   			return bytes(json_object['__value__'])
+   	return json_object
+   
+   
+   import customserializer
+   with open('entry.json', 'w', encoding='utf-8') as f:
+       json.dump(entry, f, default=customserializer.to_json)
+   
+   with open('entry.json', 'r', encoding='utf-8') as f:
+       entry = json.load(f, object_hook=customserializer.from_json)
+   ```
+
+6. json module does not distinguish between lists and tuples.
