@@ -163,7 +163,149 @@
 ## Unit Testing
 
 1. There is a limited range of numbers that can be expressed as Roman numerals, specifically 1 through 3999. There is no way to represent 0 in Roman numerals.
+
 2. A test case answers a single question about the code it is testing (**Every test is an island**).
+
 3. Test-driven development: Write a test that fails, then code until it passes.
+
 4. Using Python's reserved word `pass` is good way when you want to stub a method that you are going to write later.
+
 5. When a test case doesn't pass, `unittest` distinguishes between **failures and errors**.
+
+6. It is not enough to test with good input, you should also test bad input.
+
+7. Define exceptions:
+
+   ```python
+   # These two exceptions extend ValueError exception
+   class OutOfRangeError(ValueError): pass
+   class NotIntegerError(ValueError): pass
+   ```
+
+8. Write docstrings is also a valid way to stub a function:
+
+   ```python
+   # roman5.py
+   def from_roman(s):
+   '''convert Roman numeral to integer'''
+   ```
+
+
+
+## Refactoring
+
+1. Today’s unit test is tomorrow’s regression test.
+
+2. Be aware to differentiate between failures and errors.
+
+3. The best thing about unit testing is that it gives you the freedom to refactor mercilessly.
+
+4. Lesson learned about unit testing:
+
+   • Designing test cases that are specific, automated, and independent
+
+   • Writing test cases before the code they are testing
+
+   • Writing tests that test good input and check for proper results
+
+   • Writing tests that test bad input and check for proper failure responses
+
+   • Writing and updating test cases to reflect new requirements
+
+   • Refactoring mercilessly to improve performance, scalability, readability, maintainability, or whatever other -ility you’re lacking
+
+
+
+## File
+
+1. Bytes are bytes; characters are an abstraction.
+
+2. The default encoding is platform-dependent (On Windows, it is CP-1252). Always specify the encoding when you open a file!
+
+3. Use `with` statement when opening a file:
+
+    ```python
+   # with will automatically close the file when the block ends
+   with open('examples/chinese.txt', encoding='utf-8') as a_file:
+   	a_file.seek(17)
+   	a_character = a_file.read(1)
+   	print(a_character)
+    ```
+
+4. ```python
+   # Read a whole text file
+   with open('examples/chinese.txt', encoding='utf-8') as a_file:
+       text = a_file.read()
+       print(text)
+   
+   # Read a text file line by line
+   line_number = 0
+   with open('examples/favorite-people.txt', encoding='utf-8') as a_file:
+       for a_line in a_file:
+           line_number += 1
+           print('{:>4} {}'.format(line_number, a_line.rstrip()))
+   
+   # Write/Append to a text file
+   >>> with open('test.log', mode='w', encoding='utf-8') as a_file:
+   ...    a_file.write('test succeeded')
+   >>> with open('test.log', encoding='utf-8') as a_file:
+   ...    print(a_file.read())
+   test succeeded
+   >>> with open('test.log', mode='a', encoding='utf-8') as a_file:
+   ...    a_file.write('and again')
+   >>> with open('test.log', encoding='utf-8') as a_file:
+   ...    print(a_file.read())
+   test succeededand again
+   
+   # Read a binary file
+   with open('examples/beauregard.jpg', mode='rb') as an_image:
+       data = an_image.read(3) # read 3 bytes
+       print(data)
+   
+   ```
+
+    File object does not always need files as source:
+
+   ```python
+   # We can treat strings as file objects
+   >>> a_string = 'PapayaWhip is the new black.'
+   >>> import io 1
+   >>> a_file = io.StringIO(a_string)
+   >>> a_file.read()
+   'PapayaWhip is the new black.'
+   
+   # This is how to treat compressed files
+   >>> import gzip
+   >>> with gzip.open('out.log.gz', mode='wb') as z_file:
+   ...     z_file.write('A nine mile walk is no joke, especially in the rain.'.encode('utf-8'))
+   ...
+   >>> exit()
+   ```
+
+5.  standard input, output and error:
+
+   ```python
+   import sys
+   sys.stdin
+   sys.stdout
+   sys.stderr
+   
+   ## Below is how to define a custom context manager to redirect stdout
+   import sys
+   class RedirectStdoutTo:
+       def __init__(self, out_new):
+           self.out_new = out_new
+       def __enter__(self):
+           self.out_old = sys.stdout
+           sys.stdout = self.out_new
+       def __exit__(self, *args):
+           sys.stdout = self.out_old
+   
+   print('A')
+   with open('out.log', mode='w', encoding='utf-8') as a_file,RedirectStdoutTo(a_file):
+       print('B')
+   print('C')
+   
+   # Only 'A', 'C' will print on screen
+   # 'B' will be printed to file out.log
+   ```
