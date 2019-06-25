@@ -4,4 +4,4 @@ Nitty-gritty of python from book: https://donsheehy.github.io/datastructures/ful
 2. A single .py file is called a module. You can import one module into another using the import keyword. 
 3. When we import a module, the code in that module is executed. 
 4. The module also has a namespace in which these functions and classes are defined.
-5. 
+5. Python’s polymorphism is based on the idea of duck typing. The name comes from an old expression that if something walks like a duck and quacks like a duck, then it is a duck. 
