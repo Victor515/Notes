@@ -111,7 +111,7 @@ A model is given a dataset with *labeled* examples
 
 The model finds the best solution by comparing its predicted value to the label's actual value.
 
-Loss --  the difference between the predicted and actual values
+**Loss --  the difference between the predicted and actual values**
 
 During training, ML practitioners can make subtle adjustments to the configurations and features the model uses to make predictions.
 
