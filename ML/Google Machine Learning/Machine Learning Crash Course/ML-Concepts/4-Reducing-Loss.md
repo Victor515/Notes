@@ -48,3 +48,29 @@ Note that a gradient is a vector, so it has both of the following characteristic
 
 - a **direction**, by def, The gradient **always points in the direction of steepest increase** in the loss function
 - a **magnitude**
+
+
+
+# Learning Rate
+
+Gradient descent algorithms multiply the gradient by a **scalar** known as the **learning rate** (also sometimes called **step size**) to determine the next point.
+
+For example, gradient magnitude = 2.5, learning rate = 0.1, next point will be 0.025 away
+
+
+
+**Hyperparameters**: knobs that programmers tweak in machine learning algorithms. Learning rate is one of the hyperparameters.
+
+Math about the ideal learning rate: https://developers.google.com/machine-learning/crash-course/reducing-loss/learning-rate#expandable-1
+
+
+
+# Stochastic Gradient Descent
+
+Term **Batch**: the total number of examples you use to calculate the gradient in a single iteration
+
+We cannot use the entire data set (all examples) in large scale, so randomly sampling examples might be redundant
+
+**Stochastic Gradient descent (SGD)**: uses only a single example (a batch size of 1) per iteration. Given enough iterations, SGD works but is very noisy
+
+**Mini-batch stochastic gradient descent (mini-batch SGD)**: typically 10 ~ 1000 examples
